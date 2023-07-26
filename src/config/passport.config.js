@@ -3,6 +3,7 @@ import local from 'passport-local';
 import GithubStrategy from 'passport-github2';
 import { createUser, getAll, getByEmail, getById } from '../DAO/UserDAO.js';
 import { createHash, isValidPassword } from '../utils/index.js';
+import config from './libreria.config.js';
 
 const LocalStrategy = local.Strategy;
 

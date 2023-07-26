@@ -4,7 +4,7 @@ import config from "../config/libreria.config.js"
 const JWT_PRIVATE_KEY = config.JWT_PRIVATE_KEY;
 
 export const generateToken = user => {
-    const token = jwt.sign(user, JWT_PRIVATE_KEY, {expiresIn: "24h"});
+    const token = jwt.sign({user}, JWT_PRIVATE_KEY, {expiresIn: "24h"});
     return token;
 };
 

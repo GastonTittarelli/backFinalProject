@@ -21,7 +21,7 @@ const manager = new ProductManager();
 
 const app = express();
 
-const baseDeDatos = mongoose.connect('mongodb+srv://g:proyecto321@proyecto.veaq7ux.mongodb.net/ecommerce?retryWrites=true&w=majority');
+// const baseDeDatos = mongoose.connect('mongodb+srv://g:proyecto321@proyecto.veaq7ux.mongodb.net/ecommerce?retryWrites=true&w=majority');
 
 
 const serve = http.Server(app);
