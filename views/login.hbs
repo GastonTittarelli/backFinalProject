@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inicio de sesión</title>
+</head>
+<body>
+    <h1>Inicio de sesión</h1>
+    <form action="/api/session/login" method="post">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required>
+        
+        <button type="submit">Iniciar sesión</button>
+    </form>
+    <button onclick="location.href='/api/session/github'">Entrar con Github</button>
+    
+    <p>No tienes una cuenta? <a href="/api/session/registro">Regístrate aquí</a></p>
+</body>
+</html>
