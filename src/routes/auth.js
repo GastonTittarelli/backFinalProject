@@ -30,10 +30,10 @@ authRouter.post("/login", async (req,res) => {
     const { email, password } = req.body;
     if (!email || !password) return res.send({status: "error", error: "falta uno o mas valores"})
     const user = await getByEmail(email);
-    if(user) return res.send.status(400).send({status: "error", error: "El usuario no se encuentra"});
+    if(!user) return res.send.status(400).send({status: "error", error: "El usuario no se encuentra"});
     if(!validatePassword(user, password)) return res.status(400).send({status: "error", error: "credenciales inválidas"})
     const access_token = generateToken(user)
-    res.send({status: "success", access_token})
+    res.cookie("authToken", access_token).send({status: "success", access_token})
 })
 
 authRouter.get("/current", authToken, (req, res) =>{

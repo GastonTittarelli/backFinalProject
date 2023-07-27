@@ -16,6 +16,7 @@ import {initializePassport, initializePassportGithub} from "./src/config/passpor
 import viewsRouter from "./src/routes/views.js";
 import config from "./src/config/libreria.config.js";
 import authRouter from "./src/routes/auth.js";
+import cookieParser from "cookie-parser";
 
 const manager = new ProductManager();
 
@@ -31,6 +32,7 @@ app.engine(".hbs", handlebars.engine({ extname: ".hbs", defaultLayout: "main.hbs
 app.set("view engine", ".hbs")
 app.set("views", "./views");
 
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 app.use(express.static("public"));

@@ -9,9 +9,15 @@ export const generateToken = user => {
 };
 
 export const authToken = (req, res, next) =>{
-    const authHeaders = req.headers.Authorization || req.headers.authorization;
-    if(!authHeaders) return res.status(401).send({error: "No se recibio el token"});
-    const token = authHeaders.split(" ")[1];
+    let token;
+    const authHeaders = req.headers.Authorization ? req.headers.Authorization : req.headers.authorization;
+    const cookieToken = req.cookies["authToken"];
+    if(!authHeaders && !cookieToken) return res.status(401).send({error: "No se recibio el token"});
+    if(authHeaders){
+        token = authHeaders.split(" ")[1];
+    }else{
+        token = cookieToken;
+    }
     jwt.verify(token, JWT_PRIVATE_KEY, (error, credentials) =>{
         if(error) return res.status(403).send({error: "No autorizado"})
         req.user = credentials.user;
