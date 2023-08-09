@@ -65,7 +65,7 @@ app.get("/hbs", async (req, res) => {
     let productos = await manager.getProducts();
 
     res.render("productos", {productos});
-})
+});
 
 
 io.on("connection", (socket) => {
