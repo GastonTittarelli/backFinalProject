@@ -29,7 +29,7 @@ const serve = http.Server(app);
 const io = new Server(serve);
 
 app.engine(".hbs", handlebars.engine({ extname: ".hbs", defaultLayout: "main.hbs"}));
-app.set("view engine", ".hbs")
+app.set("view engine", ".hbs");
 app.set("views", "./views");
 
 app.use(cookieParser());
