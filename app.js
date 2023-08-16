@@ -17,6 +17,10 @@ import viewsRouter from "./src/routes/views.js";
 import config from "./src/config/libreria.config.js";
 import authRouter from "./src/routes/auth.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";
+import userRouter from "./src/routes/users.js";
+import businessRouter from "./src/routes/business.js";
+import ticketRouter from "./src/routes/ticket.js";
 
 const manager = new ProductManager();
 
@@ -32,6 +36,7 @@ app.engine(".hbs", handlebars.engine({ extname: ".hbs", defaultLayout: "main.hbs
 app.set("view engine", ".hbs");
 app.set("views", "./views");
 
+app.use(cors({origin: "http://127.0.0.1:5500", methods:["GET", "POST", "PUT"] }));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
@@ -41,6 +46,9 @@ app.use("/api/product", productRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/messages", messagesRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/users", userRouter);
+app.use("/api/business", businessRouter);
+app.use("/api/ticket", ticketRouter);
 
 app.use(session({
     store: MongoStore.create({
