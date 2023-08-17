@@ -1,10 +1,10 @@
-import mongoose from "mongoose";
-import { userModel } from "./models/user2.js";
-import config from "../config/libreria.config.js";
+// import mongoose from "mongoose";
+// import { userModel } from "./models/user2.js";
+// import config from "../config/libreria.config.js";
 
-const MONGO_CONNECTION_STRING = config.MONGO_CONNECTION_STRING;
+// const MONGO_CONNECTION_STRING = config.MONGO_CONNECTION_STRING;
 
-mongoose.connect(MONGO_CONNECTION_STRING)
+// mongoose.connect(MONGO_CONNECTION_STRING)
 
 export const getByEmail = async email =>{
     let result;

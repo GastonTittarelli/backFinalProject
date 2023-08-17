@@ -26,7 +26,7 @@ const manager = new ProductManager();
 
 const app = express();
 
-// const baseDeDatos = mongoose.connect('mongodb+srv://g:proyecto321@proyecto.veaq7ux.mongodb.net/ecommerce?retryWrites=true&w=majority');
+const baseDeDatos = mongoose.connect('mongodb+srv://g:proyecto321@proyecto.veaq7ux.mongodb.net/ecommerce?retryWrites=true&w=majority');
 
 
 const serve = http.Server(app);
@@ -46,9 +46,10 @@ app.use("/api/product", productRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/messages", messagesRouter);
 app.use("/api/auth", authRouter);
+
 app.use("/api/users", userRouter);
 app.use("/api/business", businessRouter);
-app.use("/api/ticket", ticketRouter);
+app.use("/api/tickets", ticketRouter);
 
 app.use(session({
     store: MongoStore.create({
