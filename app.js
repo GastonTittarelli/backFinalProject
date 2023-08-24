@@ -21,6 +21,8 @@ import cors from "cors";
 import userRouter from "./src/routes/users.js";
 import businessRouter from "./src/routes/business.js";
 import ticketRouter from "./src/routes/ticket.js";
+import userTestRouter from "./src/routes/userTest.js";
+import errorHandler from "./src/middlewares/errors/errores.js";
 
 const manager = new ProductManager();
 
@@ -50,6 +52,8 @@ app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
 app.use("/api/business", businessRouter);
 app.use("/api/tickets", ticketRouter);
+app.use("/api/userTest", userTestRouter);
+app.use(errorHandler);
 
 app.use(session({
     store: MongoStore.create({
