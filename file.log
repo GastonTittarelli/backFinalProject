@@ -1,0 +1,7 @@
+{"level":"warn","message":"log warn"}
+{"level":"info","message":"log info"}
+{"level":"error","message":"log error"}
+fatal: log fatal
+warning: log warning
+error: log error
+info: log info

@@ -23,6 +23,7 @@ import businessRouter from "./src/routes/business.js";
 import ticketRouter from "./src/routes/ticket.js";
 import userTestRouter from "./src/routes/userTest.js";
 import errorHandler from "./src/middlewares/errors/errores.js";
+import { addLogger } from "./src/utils/logger.js";
 
 const manager = new ProductManager();
 
@@ -71,8 +72,27 @@ initializePassportGithub();
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 app.use("/api/session", sessionRouter);
 app.use("/", viewsRouter);
+app.use(addLogger)
+
+
+app.get("/logger1", (req,res) =>{
+    req.logger.fatal("log fatal")
+    req.logger.warning("log warning")
+    req.logger.error("log error")
+    req.logger.info("log info")
+    req.logger.debug("log debug")
+
+    res.send("ok")
+})
+
+
+app.get("/logger2", (req,res) =>{
+    req.logger.info("Info de logger 2")
+    res.send("ok")
+})
 
 app.get("/hbs", async (req, res) => {
     let productos = await manager.getProducts();
