@@ -78,19 +78,26 @@ app.use("/", viewsRouter);
 app.use(addLogger)
 
 
-app.get("/logger1", (req,res) =>{
+app.get("/loggerProd", (req,res) =>{
     req.logger.fatal("log fatal")
     req.logger.warning("log warning")
     req.logger.error("log error")
     req.logger.info("log info")
+    req.logger.http("log http")
     req.logger.debug("log debug")
 
     res.send("ok")
 })
 
 
-app.get("/logger2", (req,res) =>{
-    req.logger.info("Info de logger 2")
+app.get("/loggerDev", (req,res) =>{
+    req.logger.fatal("logDev fatal")
+    req.logger.warning("logDev warning")
+    req.logger.error("logDev error")
+    req.logger.info("logDev info")
+    req.logger.http("logDev http")
+    req.logger.debug("logDev debug")
+
     res.send("ok")
 })
 
