@@ -1,1 +1,9 @@
 
+fatal: log fatal
+warning: log warning
+error: log error
+info: log info
+fatal: logDev fatal
+warning: logDev warning
+error: logDev error
+info: logDev info

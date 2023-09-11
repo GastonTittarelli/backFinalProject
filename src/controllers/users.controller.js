@@ -1,4 +1,5 @@
 import User from "../DAO/User3DAO.js"
+import { sendMaild, createOptions } from "../services/mailing.js";
 
 const userService = new User();
 
@@ -17,7 +18,9 @@ export const getUsersById = async (req, res) => {
 
 export const saveUsers = async (req, res) => {
     const user = req.body;
-    let result = await userService.saveUser(user);
+    let newUser = await userService.saveUser(user);
+    let options = createOptions(user.email)
+    let mailResult = await sendMaild(options)
     if(!result) return res.status(500).send({status: "error", error: "Error saving user"})
-    res.send({status: "success", result})
+    res.send({status: "success", payload: {newUser, mailResult}})
 }
