@@ -1,0 +1,103 @@
+paths:
+  /api/users/:
+    get:
+      summary: Obtiene todos los usuarios
+      tags:
+        - Users
+      responses:
+        "200":
+          description: Los usuarios fueron obtenidos correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/User"
+        "500":
+          description: Error interno del servidor
+  /api/users/{uid}:
+    get:
+      summary: Obtiene el usuario en base al uid recibido
+      tags:
+        - Users
+      parameters:
+      - name: uid
+        in: path
+        required: true
+        description: id del usuario a buscar
+        schema:
+          type: String
+      responses:
+        "200":
+          description: Los usuarios fueron obtenidos correctamente
+          content:
+            application/json:
+              schema:
+                $ref: "#components/schemas/User"
+        "500":
+          description: Error interno del servidor
+    put:
+      summary: Actualiza el usuario por su id
+      tags:
+        - Users
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: id del usuario a actualizar
+          schema:
+            type: String
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/requestBodies/userImput"
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado por mongo
+        first_name:
+          type: String
+          description: Nombre de usuario
+        last_name:
+          type: String
+          description: Apellido de usuario
+        email:
+          type: String
+          description: Email de usuario
+        password:
+          type: String
+          description: Password de usuario
+      example:
+        _id: ObjectId("asd21dsa1")
+        first_name: Levi
+        last_name: Ackerman
+        email: la@mail.com
+        password: dsadas123sda
+  requestBodies:
+    userImput:
+      type: object
+      properties:
+        first_name:
+          type: String
+          description: Nombre de usuario
+        last_name:
+          type: String
+          description: Apellido de usuario
+        email:
+          type: String
+          description: Email de usuario
+        password:
+          type: String
+          description: Password de usuario
+      example:
+        first_name: Levi
+        last_name: Ackerman
+        email: la@mail.com
+        password: dsadas123sda

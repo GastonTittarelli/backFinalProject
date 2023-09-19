@@ -24,6 +24,9 @@ import ticketRouter from "./src/routes/ticket.js";
 import userTestRouter from "./src/routes/userTest.js";
 import errorHandler from "./src/middlewares/errors/errores.js";
 import { addLogger } from "./src/utils/logger.js";
+import swaggerJsDoc from "swagger-jsdoc";
+import swaggerUiExpress from "swagger-ui-express";
+import { swaggerOptions } from "./swagger-options.js";
 
 const manager = new ProductManager();
 
@@ -100,6 +103,9 @@ app.get("/loggerDev", (req,res) =>{
 
     res.send("ok")
 })
+
+const specs = swaggerJsDoc(swaggerOptions);
+app.use("/apidocs", swaggerUiExpress.serve, swaggerUiExpress.setup(specs))
 
 app.get("/hbs", async (req, res) => {
     let productos = await manager.getProducts();

@@ -1,0 +1,101 @@
+paths:
+  /api/product/mon:
+    get:
+      summary: Obtiene todos los productos
+      tags:
+        - Products
+      responses:
+        "200":
+          description: Productos obtenidos correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Products"
+        "500":
+          description: Error del servidor
+    post:
+      summary: Crea un nuevo producto
+      tags:
+        - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/requestBodies/productImput"
+      responses:
+        "200":
+          description: Producto creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: "#components/schemas/Products"
+        "500":
+          description: Error del servidor
+
+components:
+  schemas:
+    Products:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado por mongo
+        title:
+          type: String
+          description: Nombre del producto
+        description: 
+          type: String
+          description: Descripcion del producto
+        price:
+          type: Number
+          description: Precio del producto
+        thumbnail:
+          type: String
+          description: Url de la imagen del producto
+        code:
+          type: String
+          description: Código del producto
+        stock:
+          type: Number
+          description: Cantidad de unidades del producto
+      example:
+        _id: dsdad12312ds
+        title: Coca-cola
+        description: Gaseosa con sabor a cola
+        price: 600
+        thumbnail: https://imagen.com/gaseosa
+        code: 1321313
+        stock: 200
+  requestBodies:
+    productImput:
+      type: object
+      properties:
+        title:
+          type: String
+          description: Nombre del producto
+        description: 
+          type: String
+          description: Descripcion del producto
+        price:
+          type: Number
+          description: Precio del producto
+        thumbnail:
+          type: String
+          description: Url de la imagen del producto
+        code:
+          type: String
+          description: Código del producto
+        stock:
+          type: Number
+          description: Cantidad de unidades del producto
+      example:
+        title: Coca-cola
+        description: Gaseosa con sabor a cola
+        price: 600
+        thumbnail: https://imagen.com/gaseosa
+        code: 1321313
+        stock: 200
+
