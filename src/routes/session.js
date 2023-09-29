@@ -10,6 +10,7 @@ sessionRouter.get("/register", (req, res) => {
 })
 
 sessionRouter.post("/register", passport.authenticate("register", {failureRedirect: "/api/session/failregister"}), async (req, res) => {
+    console.log("register ok")
     res.render("login", {})
 })
 
