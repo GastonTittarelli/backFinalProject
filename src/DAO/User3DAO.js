@@ -4,7 +4,7 @@ export default class User{
 
     getUsers = async () => {
         try{
-            let users = await userModel.find()
+            let users = await userModel.find({}, '-password -tickets -_id').exec();
             return users;
         } catch (error) {
             console.log(error)
