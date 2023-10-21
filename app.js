@@ -32,8 +32,7 @@ const manager = new ProductManager();
 
 const app = express();
 
-const baseDeDatos = mongoose.connect('mongodb+srv://g:proyecto321@proyecto.veaq7ux.mongodb.net/ecommerce?retryWrites=true&w=majority');
-
+const baseDeDatos = mongoose.connect(config.MONGO_CONNECTION);
 
 const serve = http.Server(app);
 const io = new Server(serve);
@@ -61,11 +60,11 @@ app.use(errorHandler);
 
 app.use(session({
     store: MongoStore.create({
-        mongoUrl: 'mongodb+srv://g:proyecto321@proyecto.veaq7ux.mongodb.net/ecommerce?retryWrites=true&w=majority',
+        mongoUrl: config.MONGO_CONNECTION,
         mongoOptions: { useNewUrlParser: true, useUnifiedTopology: true },
-        ttl: 20
+        ttl: 48 * 60 * 60
     }),
-    secret: "secreto",
+    secret: config.SECRET,
     resave: false,
     saveUninitialized: false,
 }))

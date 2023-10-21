@@ -1,8 +1,8 @@
-// import mongoose from "mongoose";
-// import { userModel } from "./models/user.model.js";
-// import config from "../config/libreria.config.js";
+import mongoose from "mongoose";
+import { userModel } from "./models/user.model.js";
+import config from "../config/libreria.config.js";
 
-// mongoose.connect('mongodb+srv://g:proyecto321@proyecto.veaq7ux.mongodb.net/ecommerce?retryWrites=true&w=majority');
+mongoose.connect(config.MONGO_CONNECTION);
 
 export const getAll = async () => {
     let result;
