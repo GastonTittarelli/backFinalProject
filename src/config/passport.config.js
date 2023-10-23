@@ -6,7 +6,6 @@ import { createHash, isValidPassword } from '../utils/index.js';
 import config from './libreria.config.js';
 
 const LocalStrategy = local.Strategy;
-const url = config.BASE_URL;
 
 export const initializePassport = () => {
     passport.use("register", new LocalStrategy(
