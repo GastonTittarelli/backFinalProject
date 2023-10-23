@@ -27,6 +27,7 @@ import { addLogger } from "./src/utils/logger.js";
 import swaggerJsDoc from "swagger-jsdoc";
 import swaggerUiExpress from "swagger-ui-express";
 import { swaggerOptions } from "./swagger-options.js";
+import paymentRoutes from "./src/routes/payment.routes.js";
 
 const manager = new ProductManager();
 
@@ -78,6 +79,7 @@ app.use(passport.session());
 app.use("/api/session", sessionRouter);
 app.use("/", viewsRouter);
 app.use(addLogger)
+app.use(paymentRoutes);
 
 
 app.get("/loggerProd", (req,res) =>{
@@ -123,6 +125,7 @@ app.get('/realtimeproducts', async (req, res) => {
     let productos = await manager.getProducts();
     res.render('realtimeproducts', { productos }); 
 });
+
 
 
 const PORT = config.PORT;
