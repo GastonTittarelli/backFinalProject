@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    width: 100vw;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(240, 191, 173);
+    border-bottom: solid rgb(0, 0, 0);
+}
+
+h1{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 3rem;
+}
+
+h2{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 2.3rem;
+}
+
+main{
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    width: 20vw;
+    height: 40vh;
+    background-color: rgb(232, 204, 194);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 9px 9px 4px 4px;
+    box-shadow: 6px 6px 18px 0px rgba(0,0,0,0.3)
+}
+
+img{
+    width: 100%;
+    border-radius: 8px 8px 0px 0px;
+}
+
+h3{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+#checkout{
+    width: 40%;
+    height: 7%;
+}
+
+.Retorno{
+    width: 30vw;
+    height: 20vh;
+    background-color: rgb(139, 237, 157);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 9px 9px 4px 4px;
+    box-shadow: 6px 6px 18px 0px rgba(0,0,0,0.3)
+}
+
+#btnRetorno{
+    width: 40%;
+    height: 20%;
+    background-color: rgb(151, 21, 21);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+#btnRetorno:hover{
+    background-color: #2980b9;
+}
+#btnRetorno:active {
+    background-color: #015d9a;
+    transform: translateY(2px);
+}
