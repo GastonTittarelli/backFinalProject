@@ -14,5 +14,6 @@ export default {
     GMAIL_PASS_AUTH: process.env.GMAIL_PASS_AUTH,
     MONGO_CONNECTION: process.env.MONGO_CONNECTION,
     SECRET: process.env.SECRET,
-    STRIPE_PRIVATE_KEY: process.env.STRIPE_PRIVATE_KEY
+    STRIPE_PRIVATE_KEY: process.env.STRIPE_PRIVATE_KEY,
+    URL_BASE: process.env.URL_BASE
 }

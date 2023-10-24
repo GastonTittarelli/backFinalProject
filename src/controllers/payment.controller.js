@@ -19,8 +19,8 @@ export const createSession = async (req, res) => {
             }
         ],
         mode: "payment",
-        success_url:"http://localhost:8080/success",
-        cancel_url: "http://localhost:8080/cancel",
+        success_url:`${config.URL_BASE}/success`,
+        cancel_url: `${config.URL_BASE}/cancel`,
     })
     return res.json(session1)
 }
