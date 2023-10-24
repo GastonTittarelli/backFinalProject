@@ -2,6 +2,7 @@ import Stripe from 'stripe'
 import  config  from '../config/libreria.config.js'
 
 const stripe = new Stripe(config.STRIPE_PRIVATE_KEY)
+const urlBase = config.URL_BASE;
 
 export const createSession = async (req, res) => {
     const session1 = await stripe.checkout.sessions.create({
@@ -19,8 +20,8 @@ export const createSession = async (req, res) => {
             }
         ],
         mode: "payment",
-        success_url:`${config.URL_BASE}/success`,
-        cancel_url: `${config.URL_BASE}/cancel`,
+        success_url:`${urlBase}/success`,
+        cancel_url: `${urlBase}/cancel`,
     })
     return res.json(session1)
 }
